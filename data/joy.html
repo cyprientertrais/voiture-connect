@@ -4,7 +4,8 @@
 		<title>Joy</title>
 		<meta charset="utf-8">
 		
-		<script src="joy.js"></script>
+		<script src="joyleft.js"></script>
+		<script src="joyright.js"></script>
 		<link rel="stylesheet" href="style/materialize.min.css">
 	</head>
 	<body>
@@ -28,8 +29,8 @@
 // Create JoyStick object into the DIV 'joy1Div'
 const ws = new WebSocket('ws://192.168.4.1:1337');
 
-var Joy1 = new JoyStick('joy1Div');
-var Joy2 = new JoyStick('joy2Div');
+var Joy1 = new JoyLeft('joy1Div', {internalFillColor : "#ff3700"});
+var Joy2 = new JoyRight('joy2Div');
 var joy1IinputPosX = document.getElementById("joy1PosizioneX");
 var joy1InputPosY = document.getElementById("joy1PosizioneY");
 var joy1Direzione = document.getElementById("joy1Direzione");
