@@ -49,8 +49,8 @@ var joy1Y = document.getElementById("joy1Y");
     this.onmessage = function(event) {
         console.log("Message:", event.data);
     };
-setInterval(function(){ joy1X.value=Joy1.GetX()*2.55.toFixed(1); }, 200);
-setInterval(function(){ joy1Y.value=Joy1.GetY()*2.55.toFixed(1); }, 200);
+//setInterval(function(){ joy1X.value=Joy1.GetX()*2.55.toFixed(1); }, 200);
+//setInterval(function(){ joy1Y.value=Joy1.GetY()*2.55.toFixed(1); }, 200);
 
 var joy2IinputPosX = document.getElementById("joy2PosizioneX");
 var joy2InputPosY = document.getElementById("joy2PosizioneY");
@@ -59,13 +59,8 @@ var joy2X = document.getElementById("joy2X");
 var joy2Y = document.getElementById("joy2Y");
 let t = this;
 setInterval(function(){ t.send(JSON.stringify({"direction":Joy2.GetX()*2.55.toFixed(1),"motor":Joy1.GetY()*2.55.toFixed(1)})); }, 100);
- 
+setInterval(function(){console.log(JSON.stringify({"direction":Joy2.GetX()*2.55.toFixed(1),"motor":Joy1.GetY()*2.55.toFixed(1)})); }, 100);
 };
-/* 
-
-*/
-
-
 
 		</script>
 	</body>
