@@ -29,8 +29,8 @@
 // Create JoyStick object into the DIV 'joy1Div'
 const ws = new WebSocket('ws://192.168.4.1:1337');
 
-var Joy1 = new JoyLeft('joy1Div', {internalFillColor : "#ff3700"});
-var Joy2 = new JoyRight('joy2Div');
+var Joy1 = new JoyLeft('joy1Div', {internalFillColor : "#d1d1d1", internalStrokeColor:"#636060", externalStrokeColor:"#636060"});
+var Joy2 = new JoyRight('joy2Div', {internalFillColor : "#d1d1d1", internalStrokeColor:"#636060", externalStrokeColor:"#636060"});
 var joy1IinputPosX = document.getElementById("joy1PosizioneX");
 var joy1InputPosY = document.getElementById("joy1PosizioneY");
 var joy1Direzione = document.getElementById("joy1Direzione");
