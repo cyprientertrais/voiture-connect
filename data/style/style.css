@@ -13,3 +13,6 @@
 .holds-the-iframe{
     background:url(../../images/loader.gif) center center no-repeat;
 }
+#carVideo{
+    min-height: 360px;
+}
