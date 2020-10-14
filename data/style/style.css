@@ -1,0 +1,15 @@
+#joy1Div{
+    width:200px;
+    height:200px;
+    position:absolute;
+    left:0;
+}
+#joy2Div{
+    width:200px;
+    height:200px;
+    position:absolute;
+    right:0;
+}
+.holds-the-iframe{
+    background:url(../../images/loader.gif) center center no-repeat;
+}

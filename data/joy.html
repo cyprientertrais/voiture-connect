@@ -1,67 +1,74 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Joy</title>
-		<meta charset="utf-8">
-		
-		<script src="joyleft.js"></script>
-		<script src="joyright.js"></script>
-		<link rel="stylesheet" href="style/materialize.min.css">
-	</head>
-	<body>
-		<!-- Example of FIXED or ABSOLUTE position -->
-	
-		<!-- Example of two JoyStick integrated in the page structure -->
-		<div class="row">
+
+<head>
+	<title>Joy</title>
+	<meta charset="utf-8">
+
+	<script src="joyleft.js"></script>
+	<script src="joyright.js"></script>
+	<link rel="stylesheet" href="style/materialize.min.css">
+	<link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+	<!-- Example of FIXED or ABSOLUTE position -->
+
+	<!-- Example of two JoyStick integrated in the page structure -->
+	<div>
+		<div class="holds-the-iframe"><iframe id="carVideo" title="Car video" width="100%" src="http://192.168.4.2:81/stream"></iframe></div>
+	</div>
+	<div class="row">
 		<div class="col s6">
 			<div class="columnLateral">
-				<div id="joy1Div" style="width:200px;height:200px;"></div>
-			
+				<div id="joy1Div"></div>
 			</div>
 		</div>
-		<div class="col s6" >
-			<div class="columnLateral1" >
-				<div id="joy2Div" style="width:200px;height:200px;position:absolute;right:0"></div>
+		<div class="col s6">
+			<div class="columnLateral1">
+				<div id="joy2Div"></div>
 			</div>
 		</div>
-		<script type="text/javascript">
+	</div>
+	<script type="text/javascript">
 
-// Create JoyStick object into the DIV 'joy1Div'
-const ws = new WebSocket('ws://192.168.4.1:1337');
+		// Create JoyStick object into the DIV 'joy1Div'
+		const ws = new WebSocket('ws://192.168.4.1:1337');
 
-var Joy1 = new JoyLeft('joy1Div', {internalFillColor : "#d1d1d1", internalStrokeColor:"#636060", externalStrokeColor:"#636060"});
-var Joy2 = new JoyRight('joy2Div', {internalFillColor : "#d1d1d1", internalStrokeColor:"#636060", externalStrokeColor:"#636060"});
-var joy1IinputPosX = document.getElementById("joy1PosizioneX");
-var joy1InputPosY = document.getElementById("joy1PosizioneY");
-var joy1Direzione = document.getElementById("joy1Direzione");
-var joy1X = document.getElementById("joy1X");
-var joy1Y = document.getElementById("joy1Y");
+		var Joy1 = new JoyLeft('joy1Div', { internalFillColor: "#d1d1d1", internalStrokeColor: "#636060", externalStrokeColor: "#636060" });
+		var Joy2 = new JoyRight('joy2Div', { internalFillColor: "#d1d1d1", internalStrokeColor: "#636060", externalStrokeColor: "#636060" });
+		var joy1IinputPosX = document.getElementById("joy1PosizioneX");
+		var joy1InputPosY = document.getElementById("joy1PosizioneY");
+		var joy1Direzione = document.getElementById("joy1Direzione");
+		var joy1X = document.getElementById("joy1X");
+		var joy1Y = document.getElementById("joy1Y");
 
- ws.onopen = function(event) {
-    console.log("Connexion établie.");
+		ws.onopen = function (event) {
+			console.log("Connexion établie.");
 
-    // Lorsque la connexion se termine.
-    this.onclose = function(event) {
-        console.log("Connexion terminé.");
-    };
+			// Lorsque la connexion se termine.
+			this.onclose = function (event) {
+				console.log("Connexion terminé.");
+			};
 
-    // Lorsque le serveur envoi un message.
-    this.onmessage = function(event) {
-        console.log("Message:", event.data);
-    };
-//setInterval(function(){ joy1X.value=Joy1.GetX()*2.55.toFixed(1); }, 200);
-//setInterval(function(){ joy1Y.value=Joy1.GetY()*2.55.toFixed(1); }, 200);
+			// Lorsque le serveur envoi un message.
+			this.onmessage = function (event) {
+				console.log("Message:", event.data);
+			};
+			//setInterval(function(){ joy1X.value=Joy1.GetX()*2.55.toFixed(1); }, 200);
+			//setInterval(function(){ joy1Y.value=Joy1.GetY()*2.55.toFixed(1); }, 200);
 
-var joy2IinputPosX = document.getElementById("joy2PosizioneX");
-var joy2InputPosY = document.getElementById("joy2PosizioneY");
-var joy2Direzione = document.getElementById("joy2Direzione");
-var joy2X = document.getElementById("joy2X");
-var joy2Y = document.getElementById("joy2Y");
-let t = this;
-setInterval(function(){ t.send(JSON.stringify({"direction":Joy2.GetX()*2.55.toFixed(1),"motor":Joy1.GetY()*2.55.toFixed(1)})); }, 100);
-setInterval(function(){console.log(JSON.stringify({"direction":Joy2.GetX()*2.55.toFixed(1),"motor":Joy1.GetY()*2.55.toFixed(1)})); }, 100);
-};
+			var joy2IinputPosX = document.getElementById("joy2PosizioneX");
+			var joy2InputPosY = document.getElementById("joy2PosizioneY");
+			var joy2Direzione = document.getElementById("joy2Direzione");
+			var joy2X = document.getElementById("joy2X");
+			var joy2Y = document.getElementById("joy2Y");
+			let t = this;
+			setInterval(function () { t.send(JSON.stringify({ "direction": Joy2.GetX() * 2.55.toFixed(1), "motor": Joy1.GetY() * 2.55.toFixed(1) })); }, 100);
+			setInterval(function () { console.log(JSON.stringify({ "direction": Joy2.GetX() * 2.55.toFixed(1), "motor": Joy1.GetY() * 2.55.toFixed(1) })); }, 100);
+		};
 
-		</script>
-	</body>
+	</script>
+</body>
+
 </html>
