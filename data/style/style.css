@@ -14,7 +14,12 @@
     background:url(../../images/loader.gif) center center no-repeat;
 }
 #carVideo{
+    /*min-height: 480px;*/
+    min-width: 640px;
     min-height: 480px;
+    /*height: 480px;
+    width: 640px;*/
     margin: 0 auto;
     display:block;
+    border-style: none;
 }
